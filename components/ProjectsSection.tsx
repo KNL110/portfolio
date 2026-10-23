@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { projects } from "~/data/portfolio"
 import ProjectCard from "~/components/ProjectCard"
+import LiveProjects from "~/components/LiveProjects"
 
 export default function ProjectsSection() {
   const featured = projects.filter((p) => p.featured)
@@ -26,6 +27,8 @@ export default function ProjectsSection() {
       >
         View all projects
       </Link>
+
+      <LiveProjects />
     </section>
   )
 }
