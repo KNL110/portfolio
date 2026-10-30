@@ -35,7 +35,7 @@ export const education = [
 ]
 
 export const skills = {
-  Programming: ['C', 'C++', 'Python', 'Java', 'JavaScript', 'Scikit-learn'],
+  Programming: ['C', 'C++', 'Go', 'Python', 'Java', 'JavaScript', 'Scikit-learn'],
   Tools: ['Linux', 'Git', 'GitHub', 'DBMS', 'Computer Networks'],
   Coursework: [
     'Data Structures',
@@ -67,6 +67,51 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: 'ENGINOS',
+    featured: true,
+    domains: ['Web Development', 'Systems & Security'],
+    description:
+      'A self-hosted control panel that runs on your own machine. It syncs your GitHub repositories and mounts projects hosted anywhere under one domain, handling the DNS and routing through Cloudflare.',
+    bullets: [
+      'Go API and Next.js control panel, shipped with Docker Compose and no setup beyond a one-time code.',
+      'Publishes a Cloudflare Worker that keeps the sites serving while the machine is off.',
+      'Local-only by design: localhost binding, hostname checks, PIN lock, and encrypted stored tokens.',
+    ],
+    tags: ['Go', 'Next.js', 'TypeScript', 'Docker', 'Cloudflare Workers', 'SQLite'],
+    links: [{ label: 'GitHub', href: 'https://github.com/KNL110/enginos' }],
+  },
+  {
+    title: 'Crypto Exchange',
+    featured: true,
+    domains: ['Systems & Security'],
+    description:
+      'A crypto exchange backend in Go, built for learning, with a per-symbol order book and matching engine behind an HTTP API.',
+    bullets: [
+      'Limit and market orders with order expiry and self-trade prevention.',
+      'Orders and cancels signed with the user\'s wallet (EIP-712), with nonce-based replay protection.',
+      'Write-ahead log with crash recovery on startup, plus graceful shutdown.',
+    ],
+    tags: ['Go', 'EIP-712', 'Matching Engine', 'Write-Ahead Log', 'Ethereum'],
+    links: [{ label: 'GitHub', href: 'https://github.com/KNL110/crypto-exchange' }],
+  },
+  {
+    title: 'Tic-Tac-Toe RL',
+    featured: true,
+    domains: ['Machine Learning'],
+    description:
+      'Two tabular reinforcement learning agents, Q-learning and TD(0) value learning, that learn to play Tic-Tac-Toe perfectly through self-play, with no labeled data or hand-coded strategy.',
+    bullets: [
+      'After 1,000,000 self-play episodes, both agents draw every game against a perfect minimax opponent.',
+      'An exhaustive check confirms no sequence of opponent moves beats either saved agent, from either side.',
+      'Uses canonical states, negamax-style bootstrapping, and optimistic initialization.',
+    ],
+    tags: ['Python', 'Reinforcement Learning', 'Q-Learning', 'TD Learning'],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/KNL110/tictactoe-rl' },
+      { label: 'Live Demo', href: 'https://knl110.github.io/tictactoe-rl/' },
+    ],
+  },
+  {
     title: 'Smart MCQ Solver',
     featured: true,
     domains: ['Machine Learning'],
@@ -79,7 +124,7 @@ export const projects: Project[] = [
       'Best model: a custom Bidirectional LSTM reaching 0.9972 validation MAP@3.',
     ],
     tags: ['PyTorch', 'Bi-LSTM', 'Transformers', 'MiniLM', 'W&B'],
-    links: [{ label: 'GitHub', href: 'https://github.com/KNL110/DLGenAiProject' }],
+    links: [{ label: 'GitHub', href: 'https://github.com/KNL110/SmartMCQ-Solver' }],
   },
   {
     title: 'Exam Portal Application',
@@ -111,6 +156,59 @@ export const projects: Project[] = [
     ],
     tags: ['C++17', 'CMake', 'ELF', 'Reverse Engineering'],
     links: [{ label: 'GitHub', href: 'https://github.com/KNL110/REF' }],
+  },
+  {
+    title: 'AutoWifiLogin',
+    featured: false,
+    domains: ['Systems & Security'],
+    description:
+      'A small Go daemon that automatically re-authenticates against IIT Goa\'s PAN-OS wifi captive portal whenever a session times out.',
+    bullets: [
+      'Detects expiry using the same generate_204 endpoint browsers use for captive-portal detection, run on a systemd timer.',
+      'Login flow reverse-engineered from browser traffic, reading the single-use token and preauthid live from the portal.',
+    ],
+    tags: ['Go', 'Networking', 'Reverse Engineering'],
+    links: [{ label: 'GitHub', href: 'https://github.com/KNL110/AutoWifiLogin' }],
+  },
+  {
+    title: 'Process Discovery',
+    featured: false,
+    domains: ['Machine Learning'],
+    description:
+      'Recovers units of work from raw operation logs, ranks recurring processes as automation candidates, and automates the top one.',
+    bullets: [
+      'Segments interleaved activity into threads by agglomerative merging with a continuation score.',
+      'Clusters segments into process labels by fingerprint similarity.',
+      'Ranks candidates using directly-follows graphs, weighing time spent against branching complexity.',
+    ],
+    tags: ['Python', 'Process Mining', 'Clustering', 'Automation'],
+    links: [{ label: 'GitHub', href: 'https://github.com/KNL110/processDiscovery' }],
+  },
+  {
+    title: 'DistributedCAS',
+    featured: false,
+    domains: ['Systems & Security'],
+    description:
+      'A distributed content-addressable storage system in Go, in early development, currently focused on its peer-to-peer networking layer.',
+    bullets: [
+      'TCP transport with peer abstraction, accept loop, handshake, and message decoding.',
+      'Transport layer defined behind interfaces and covered by tests.',
+    ],
+    tags: ['Go', 'Distributed Systems', 'P2P', 'TCP'],
+    links: [{ label: 'GitHub', href: 'https://github.com/KNL110/DistributedCAS' }],
+  },
+  {
+    title: 'JerryCop',
+    featured: false,
+    domains: ['Systems & Security'],
+    description:
+      'A config-driven HTTP reverse proxy in Go, in early development, built around a listener and worker pool connected by channels.',
+    bullets: [
+      'Listener queues incoming requests on a channel and caps concurrent connections with a semaphore.',
+      'Workers forward requests to backends and hold the client connection open until the response returns.',
+    ],
+    tags: ['Go', 'Reverse Proxy', 'Concurrency', 'HTTP'],
+    links: [{ label: 'GitHub', href: 'https://github.com/KNL110/JerryCop' }],
   },
   {
     title: 'Rent Management System',

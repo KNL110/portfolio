@@ -19,7 +19,7 @@ export default function AboutSection() {
           </p>
           <p>
             I&apos;m comfortable across the stack — from PyTorch model training to MERN full-stack apps to
-            systems-y projects in C/C++ — and I&apos;m always looking for the next thing to build.
+            systems-y projects in Go and C/C++ — and I&apos;m always looking for the next thing to build.
           </p>
         </div>
 
