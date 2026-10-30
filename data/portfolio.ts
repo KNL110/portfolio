@@ -129,7 +129,7 @@ export const projects: Project[] = [
   },
   {
     title: 'Exam Portal Application',
-    featured: true,
+    featured: false,
     domains: ['Web Development'],
     description:
       'Full-stack exam management system with separate backend and frontend repositories, enabling secure test administration and automated grading.',
@@ -187,7 +187,7 @@ export const projects: Project[] = [
   },
   {
     title: 'DistributedCAS',
-    featured: false,
+    featured: true,
     domains: ['Systems & Security'],
     description:
       'A distributed content-addressable storage system in Go, in early development, currently focused on its peer-to-peer networking layer.',
