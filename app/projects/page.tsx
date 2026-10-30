@@ -5,8 +5,22 @@ import TheFooter from "~/components/TheFooter"
 import ProjectsGrid from "~/components/ProjectsGrid"
 import { projects } from "~/data/portfolio"
 
+const title = "Projects — Krunal Asari"
+const description =
+  "Projects by Krunal Asari across machine learning, full-stack web development, systems programming, and security tooling."
+
 export const metadata: Metadata = {
-  title: "Projects — Krunal Asari",
+  title,
+  description,
+  alternates: { canonical: "/projects/" },
+  openGraph: {
+    type: "website",
+    url: "/projects/",
+    siteName: "Krunal Asari",
+    title,
+    description,
+    images: [{ url: "/profile.jpg", width: 800, height: 800, alt: "Krunal Asari" }],
+  },
 }
 
 export default function ProjectsPage() {

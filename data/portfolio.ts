@@ -1,5 +1,6 @@
 export const profile = {
   name: 'Krunal Asari',
+  url: 'https://knllabs.dev',
   role: 'Mathematics & Computing Undergraduate',
   fieldOfStudy: 'Mathematics & Computing',
   institute: 'Indian Institute of Technology Goa',
