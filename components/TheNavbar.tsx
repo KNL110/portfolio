@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, type MouseEvent } from "react"
 import Link from "next/link"
 import { profile } from "~/data/portfolio"
 
@@ -12,13 +12,25 @@ const links = [
   { label: "Contact", to: "/#contact" },
 ]
 
+// Link does nothing when the URL already has this hash, so after scrolling away
+// from a section, clicking its link again has to scroll back by hand.
+function rescrollToSameHash(event: MouseEvent<HTMLAnchorElement>) {
+  if (event.ctrlKey || event.metaKey || event.shiftKey) return
+  const { hash, pathname } = event.currentTarget
+  if (!hash || hash !== window.location.hash || pathname !== window.location.pathname) return
+  const section = document.getElementById(hash.slice(1))
+  if (!section) return
+  event.preventDefault()
+  section.scrollIntoView()
+}
+
 export default function TheNavbar() {
   const [open, setOpen] = useState(false)
 
   return (
     <header className="sticky top-0 z-50 border-b border-ink-800/80 bg-ink-950/80 backdrop-blur">
       <nav className="container-px mx-auto flex max-w-content items-center justify-between py-4">
-        <Link href="/#top" className="font-mono text-sm font-semibold tracking-wide text-ink-100">
+        <Link href="/#top" className="font-mono text-sm font-semibold tracking-wide text-ink-100" onClick={rescrollToSameHash}>
           <span className="text-accent">&gt;</span> {profile.name.split(" ")[0]}
           <span className="text-accent">.</span>
         </Link>
@@ -29,6 +41,7 @@ export default function TheNavbar() {
               key={link.to}
               href={link.to}
               className="text-sm text-ink-300 transition-colors hover:text-accent"
+              onClick={rescrollToSameHash}
             >
               {link.label}
             </Link>
@@ -68,7 +81,10 @@ export default function TheNavbar() {
                 key={link.to}
                 href={link.to}
                 className="rounded-md px-2 py-2 text-sm text-ink-300 hover:bg-ink-800 hover:text-accent"
-                onClick={() => setOpen(false)}
+                onClick={(event) => {
+                  setOpen(false)
+                  rescrollToSameHash(event)
+                }}
               >
                 {link.label}
               </Link>
